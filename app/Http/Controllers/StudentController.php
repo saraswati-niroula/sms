@@ -18,6 +18,7 @@ class StudentController extends Controller
         //
         $students =Student::all();
         return view ('student.index',compact('students'));
+
     }
 
     /**
@@ -28,6 +29,7 @@ class StudentController extends Controller
     public function create()
     {
         //
+
     }
 
     /**
