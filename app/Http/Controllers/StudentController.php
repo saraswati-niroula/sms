@@ -29,6 +29,9 @@ class StudentController extends Controller
     public function create()
     {
         //
+        // $students =Student::all();
+        return view ('student.create');
+
 
     }
 
@@ -52,6 +55,9 @@ class StudentController extends Controller
     public function show($id)
     {
         //
+        $students =Student::all();
+        return view ('student.show',compact('students'));
+
     }
 
     /**
@@ -63,6 +69,9 @@ class StudentController extends Controller
     public function edit($id)
     {
         //
+        $students =Student::all();
+        return view ('student.edit',compact('students'));
+
     }
 
     /**

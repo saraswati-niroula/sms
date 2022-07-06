@@ -15,7 +15,6 @@ class CreateStudentsTable extends Migration
     {
         Schema::create('students', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->timestamps();
             $table->string('name', 150);
             $table->string('mobile', 10)->unique();
             $table->string('citizenship', 20)->unique(); 
@@ -26,9 +25,10 @@ class CreateStudentsTable extends Migration
             $table->string('email', 10);
             $table->date('dob');
             $table->string('picture')->nullable();
-            $table->boolean('is_active');
+            $table->boolean('is_active')->default(true);
             $table->boolean('is_almuni');
 
+            $table->timestamps();
 
         });
     }
