@@ -43,7 +43,33 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      
+        $name=$request->get('name');
+        $email=$request->get('email'); 
+        $phone=$request->get('phone');
+        $picture=$request->get('picture');
+        $dob=$request->get('dob');
+        $gender=$request->get('gender');
+        $citizenship=$request->get('citizenship');
+        $blood_group=$request->get('blood_group');
+        $p_address=$request->get('p_address');
+        $t_address=$request->get('t_address');
+        
+
+        Student::create([
+            'name'=>$name,
+            'email'=>$email,
+            'mobile'=>$phone,
+            'citizenship'=>$citizenship,
+            'blood_group'=>$blood_group,
+            'picture'=>$picture,
+            'perm_address'=>$p_address,
+            'temp_address'=>$t_address,
+            'dob'=>$dob,
+            'gender'=>$gender,
+            'is_active'=>true,
+            'is_almuni'=>false
+        ]);
     }
 
     /**

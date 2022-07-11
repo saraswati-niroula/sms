@@ -13,7 +13,8 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form>
+              <form method="POST" action="{{route('students.store')}}">
+                @csrf
                 <div class="card-body">
                   <div class="form-group">
                     <label for="name">Name</label>
@@ -35,7 +36,7 @@
                   </div>
                   <div class="form-group">
                     <label for="picture">Picture</label>
-                    <input type="file" accept="image/*" 
+                    <input type="text" 
                     name="picture"
                      class="form-control" id="picture" 
                      placeholder="choose a image" />
@@ -49,12 +50,12 @@
                   </div>
                   <div class="form-group">
                     <label for="gender">Gender</label>
-                    <input type="radio" name="gender" value="male"> Male
-                    <input type="radio" name="gender" value="female"> Female
+                    <input type="radio" name="gender" value="M"> Male
+                    <input type="radio" name="gender" value="F"> Female
                   </div>
                   <div class="form-group">
                     <label for="citizenship">Citizenship</label>
-                    <input type="file" accept="image/*" 
+                    <input type="text" 
                     name="citizenship"
                      class="form-control" id="citizenship" 
                      placeholder="choose a image" />
@@ -72,7 +73,7 @@
                       <option value="A+">O-ve</option>
                     </select> 
                   </div>
-                  <div class="form-group">
+                  <!-- <div class="form-group">
                     <label for="fathers_name">Father's Name</label>
                     <input type="text"
                     name="fathers_name"
@@ -85,7 +86,7 @@
                     name="mothers_name"
                      class="form-control" id="mothers_name" 
                      placeholder="Enter your Mothers Name">
-                  </div>
+                  </div> -->
                   <div class="form-group">
                     <label for="p_address">Permanent Address</label>
                     <input type="text"
