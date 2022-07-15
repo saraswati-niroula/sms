@@ -4,19 +4,13 @@
 @endsection
 
 @section('main_content')
-<div class="col-md-6">
+<div class="col-md-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Simple Full Width Table</h3>
+                <h3 class="card-title">Students Information</h3>
 
                 <div class="card-tools">
-                  <ul class="pagination pagination-sm float-right">
-                    <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
-                  </ul>
+                 
                 </div>
               </div>
               <!-- /.card-header -->
@@ -27,6 +21,9 @@
                       <th style="width: 10px">#</th>
                       <th>Name</th>
                       <th>Email</th>
+                      <th>Gender</th>
+                      <th>Mobile</th>
+                      <th>Action</th>
                     
                     </tr>
                   </thead>
@@ -36,6 +33,15 @@
                     <td>{{ $student->id }}</td>
                     <td>{{ $student->name }}</td>
                     <td>{{ $student->email }}</td>
+                    <td>{{ $student->gender }}</td>
+                    <td>{{ $student->mobile }}</td>
+                    <td>
+                      <a href="{{ route('students.edit', $student->id) }}">
+                        <span class="fa fa-edit">
+</a>
+</td>
+
+
                   </tr>
                   @endforeach
                   </tbody>

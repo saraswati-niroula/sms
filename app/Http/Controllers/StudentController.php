@@ -15,9 +15,10 @@ class StudentController extends Controller
      */
     public function index()
     {
-        //
+        //select * from students
         $students =Student::all();
-        return view ('student.index',compact('students'));
+        // dd($students);
+        return view('student.index',compact('students'));
 
     }
 
@@ -55,7 +56,7 @@ class StudentController extends Controller
         $p_address=$request->get('p_address');
         $t_address=$request->get('t_address');
         
-
+        try{
         Student::create([
             'name'=>$name,
             'email'=>$email,
@@ -70,8 +71,15 @@ class StudentController extends Controller
             'is_active'=>true,
             'is_almuni'=>false
         ]);
+
+        return redirect()->route('student.index');
     }
 
+catch(\Exception $e){
+    dd($e->getMessage());
+    return redirect()->back();
+}
+    }
     /**
      * Display the specified resource.
      *
@@ -94,9 +102,8 @@ class StudentController extends Controller
      */
     public function edit($id)
     {
-        //
-        $students =Student::all();
-        return view ('student.edit',compact('students'));
+        $student =Student::find($id);
+        return view ('student.edit',compact('student'));
 
     }
 

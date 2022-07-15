@@ -23,4 +23,8 @@
 // Route::get('student/create','StudentController@create')->name('student.create');
 // Route::post('students','StudentController@store')->name('student.store');
 Route::resource('students','StudentController');
+Route::resource('eduinfos','EducationalInfoController');
+Route::resource('faculties','FacultyController');
+
+
 
