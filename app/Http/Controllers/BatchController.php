@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Batch;
+
 use Illuminate\Http\Request;
 
 class BatchController extends Controller
@@ -13,7 +15,9 @@ class BatchController extends Controller
      */
     public function index()
     {
-        //
+        $batches= Batch::all();
+        //   dd($batches);
+        return view('batch.index',compact('batches'));
     }
 
     /**
@@ -23,7 +27,7 @@ class BatchController extends Controller
      */
     public function create()
     {
-        //
+        return view('batch.create');
     }
 
     /**
@@ -34,7 +38,21 @@ class BatchController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $batch_year=$request->get('batch_year');
+        $batch_name=$request->get('batch_name');
+
+        try{
+            Batch::create([
+                'batch_year'=>$batch_year,
+                'batch_name'=>$batch_name,
+                'is_active'=>true,
+            ]);
+            return redirect()->route('batches.index');
+        }
+        catch(\Exception $e){
+            dd($e->getMessage());
+            return redirect()->back();
+        }
     }
 
     /**
@@ -45,7 +63,8 @@ class BatchController extends Controller
      */
     public function show($id)
     {
-        //
+        $batches =Batch::all();
+        return view ('batch.show');
     }
 
     /**
@@ -56,7 +75,8 @@ class BatchController extends Controller
      */
     public function edit($id)
     {
-        //
+        $batch=Faculty::find($id);
+        return view ('batch.edit',compact('batch'));
     }
 
     /**

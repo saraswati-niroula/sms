@@ -63,7 +63,7 @@ class FacultyController extends Controller
      */
     public function show($id)
     {
-        $students =Student::all();
+        $faculties =Faculty::all();
         return view ('faculty.show',compact('faculties'));
     }
 
