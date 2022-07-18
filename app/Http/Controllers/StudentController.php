@@ -116,37 +116,31 @@ catch(\Exception $e){
      */
     public function update(Request $request, $id)
     {
-        // $student =Student::find($id);
+        $student =Student::find($id);
 
-        // $name=$request->get('name');
-        // $email=$request->get('email'); 
-        // $phone=$request->get('phone');
-        // $picture=$request->get('picture');
-        // $dob=$request->get('dob');
-        // $gender=$request->get('gender');
-        // $citizenship=$request->get('citizenship');
-        // $blood_group=$request->get('blood_group');
-        // $p_address=$request->get('p_address');
-        // $t_address=$request->get('t_address');
+        $name=$request->get('name');
+        $email=$request->get('email'); 
+        $phone=$request->get('phone');
+        $picture=$request->get('picture');
+        $dob=$request->get('dob');
+        $gender=$request->get('gender');
+        $citizenship=$request->get('citizenship');
+        $blood_group=$request->get('blood_group');
+        $p_address=$request->get('p_address');
+        $t_address=$request->get('t_address');
 
-        // $student['name'] = $name;
-        // $student['email'] = $email;
-        // $student['mobile'] = $phone;
-        // $student['picture'] = $picture;
-        // $student['dob'] = $dob;
-        // $student['gender'] = $gender;
-        // $student['citizenship'] = $citizenship;
-        // $student['blood_group'] = $blood_group;
-        // $student['temp_address'] = $t_address;
-        // $student['perm_address'] = $p_address;
-
-
-
-
-
-
-        // $student->update();
-        // return redirect()->route('students.show',$id);
+        $student['name'] = $name;
+        $student['email'] = $email;
+        $student['mobile'] = $phone;
+        $student['picture'] = $picture;
+        $student['dob'] = $dob;
+        $student['gender'] = $gender;
+        $student['citizenship'] = $citizenship;
+        $student['blood_group'] = $blood_group;
+        $student['temp_address'] = $t_address;
+        $student['perm_address'] = $p_address;
+        $student->update();
+        return redirect()->route('students.show',$id);
 
 
     }
