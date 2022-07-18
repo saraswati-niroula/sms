@@ -20,7 +20,7 @@
                     <label for="name">Batch Name</label>
                     <input type="text" 
                     name="batch_name"
-                    value = {{ $faculty->batch_name }}
+                    value = {{ $batch->batch_name }}
                     class="form-control" id="batch_name">
                   </div>
 
@@ -28,7 +28,7 @@
                     <label for="name">Batch Year</label>
                     <input type="text" 
                     name="batch_year"
-                    value = {{ $faculty->batch_year }}
+                    value = {{ $batch->batch_year }}
                     
                     class="form-control" id="batch_year">
                   </div>

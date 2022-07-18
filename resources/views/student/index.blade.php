@@ -37,9 +37,12 @@
                     <td>{{ $student->mobile }}</td>
                     <td>
                       <a href="{{ route('students.edit', $student->id) }}">
-                        <span class="fa fa-edit">
-</a>
-</td>
+                        Edit
+                    </a>
+                    <a href="{{ route('students.show', $student->id) }}">
+                       Show
+                    </a>
+                    </td>
 
 
                   </tr>

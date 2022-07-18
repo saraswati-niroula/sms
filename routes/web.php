@@ -26,6 +26,8 @@ Route::resource('students','StudentController');
 Route::resource('eduinfos','EducationalInfoController');
 Route::resource('faculties','FacultyController');
 Route::resource('batches','BatchController');
+Route::resource('semesters','SemesterController');
+
 
 
 

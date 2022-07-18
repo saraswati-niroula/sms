@@ -213,7 +213,7 @@
             <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
-                Management
+               Student Management
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
@@ -234,6 +234,12 @@
                 <a href="{{route('batches.index')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Batch</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('semesters.index')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Semester</p>
                 </a>
               </li>
             </ul>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Semester;
 use Illuminate\Http\Request;
 
 class SemesterController extends Controller
@@ -13,7 +14,9 @@ class SemesterController extends Controller
      */
     public function index()
     {
-        //
+        $semesters= Semester::all();
+        //   dd($batches);
+        return view('semester.index',compact('semesters'));
     }
 
     /**
@@ -23,7 +26,7 @@ class SemesterController extends Controller
      */
     public function create()
     {
-        //
+        return view('semester.create');
     }
 
     /**
@@ -34,7 +37,21 @@ class SemesterController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $created_by=$request->get('created_by');
+        $semester_name=$request->get('semester_name');
+
+        try{
+            Semester::create([
+                'created_by'=>1,
+                'semester_name'=>$semester_name,
+                'is_active'=>true,
+            ]);
+            return redirect()->route('semesters.index');
+        }
+        catch(\Exception $e){
+            dd($e->getMessage());
+            return redirect()->back();
+        }
     }
 
     /**
@@ -45,7 +62,8 @@ class SemesterController extends Controller
      */
     public function show($id)
     {
-        //
+        $semester=Semester::find($id);
+        return view ('semester.show',compact('semester'));
     }
 
     /**
@@ -56,7 +74,8 @@ class SemesterController extends Controller
      */
     public function edit($id)
     {
-        //
+        $semester=Semester::find($id);
+        return view ('semester.edit',compact('semester'));
     }
 
     /**

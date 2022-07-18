@@ -13,7 +13,8 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form method="POST" action="{{route('students.store')}}">
+              <form method="POST" action="{{route('students.update',$student->id)}}">
+                @method('PATCH')
                 @csrf
                 <div class="card-body">
                   <div class="form-group">
@@ -41,7 +42,7 @@
                     <label for="picture">Picture</label>
                     <input type="text" 
                     name="picture"
-                    value = {{ $student->picture }}
+                    value ={{ $student->picture }}
                      class="form-control" id="picture" 
                      placeholder="choose a image" />
                   </div>
@@ -93,10 +94,11 @@
                      class="form-control" id="mothers_name" 
                      placeholder="Enter your Mothers Name">
                   </div> -->
-                  <!-- <div class="form-group">
+                  <div class="form-group">
                     <label for="p_address">Permanent Address</label>
                     <input type="text"
                     name="p_address"
+                    value = {{ $student->perm_address }}
                      class="form-control" id="p_address" 
                      placeholder="Enter your Permanent Address">
                   </div>
@@ -104,9 +106,10 @@
                     <label for="t_address">Temporary Address</label>
                     <input type="text"
                     name="t_address"
+                    value = {{ $student->temp_address }}
                      class="form-control" id="t_address" 
                      placeholder="Enter your Temporary Address">
-                  </div> -->
+                  </div>
              
                   <!-- <div class="form-group">
                     <label for="exampleInputFile">File input</label>

@@ -40,10 +40,12 @@
                     <td>{{ $faculty->faculty_name }}</td>
                     <td>
                       <a href="{{ route('faculties.edit', $faculty->id) }}">
-                        <span class="fa fa-edit">
-</a>
-</td>
-
+                        Edit
+                    </a>
+                    <a href="{{ route('faculties.show', $faculty->id) }}">
+                       Show
+                    </a>
+                    </td>
                   </tr>
                   @endforeach
                   </tbody>
