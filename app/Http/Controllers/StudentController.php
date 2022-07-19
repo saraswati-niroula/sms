@@ -88,10 +88,8 @@ catch(\Exception $e){
      */
     public function show($id)
     {
-        //
-        $students =Student::all();
-        return view ('student.show',compact('students'));
-
+        $student=Student::find($id);
+        return view ('student.show',compact('student'));
     }
 
     /**

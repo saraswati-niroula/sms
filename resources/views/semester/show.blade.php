@@ -7,7 +7,7 @@
 <div class="col-md-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Faculty Information</h3>
+                <h3 class="card-title">Semester Information</h3>
 
                 <div class="card-tools">
                   <!-- <ul class="pagination pagination-sm float-right">
@@ -24,7 +24,7 @@
                 <table class="table">
                   <thead>
                     <tr>
-                      <th style="width: 10px">#</th>
+                      <th style="width: 10px">ID</th>
                       
                       <th>Semester Name</th>
                       <th>Created By</th>

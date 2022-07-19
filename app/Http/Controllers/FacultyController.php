@@ -63,8 +63,8 @@ class FacultyController extends Controller
      */
     public function show($id)
     {
-        $faculties =Faculty::all();
-        return view ('faculty.show',compact('faculties'));
+        $faculty =Faculty::find($id);
+        return view ('faculty.show',compact('faculty'));
     }
 
     /**
@@ -88,7 +88,19 @@ class FacultyController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $faculty=Faculty::find($id);
+
+        $faculty_name=$request->get('faculty_name');
+        $faculty_code=$request->get('faculty_code');
+
+
+        $faculty['faculty_name']=$faculty_name;
+        $faculty['faculty_code']=$faculty_code;
+
+        $faculty->update();
+        return redirect()->route('faculties.show',$id);
+
+
     }
 
     /**

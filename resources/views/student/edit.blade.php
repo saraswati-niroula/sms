@@ -5,11 +5,11 @@
 
 @section('main_content')
 <div class="row">
-<div class="col-md-6">
+<div class="col-md-12">
             <!-- general form elements -->
             <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Student Registration Form</h3>
+                <h3 class="card-title">Student Edit Form</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
@@ -19,7 +19,7 @@
                 @csrf
                 <div class="card-body">
                   <div class="form-group">
-                    <label for="name">Name</label>
+                    <label for="name">Name </label>
                     <input type="text" 
                     name="name"
                     value = {{ $student->name }}

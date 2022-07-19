@@ -87,7 +87,18 @@ class SemesterController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $semester=Semester::find($id);
+
+        $created_by=$request->get('created_by');
+        $semester_name=$request->get('semester_name');
+
+
+        $semester['semester_name'] = $semester_name;
+        $semester['created_by'] =1;
+
+        $semester->update();
+        return redirect()->route('semesters.show',$id);
+
     }
 
     /**
