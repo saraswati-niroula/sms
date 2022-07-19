@@ -39,12 +39,23 @@
                     <td>{{ $faculty->faculty_code }}</td>
                     <td>{{ $faculty->faculty_name }}</td>
                     <td>
-                      <a href="{{ route('faculties.edit', $faculty->id) }}">
-                        Edit
+                    <a href="{{ route('faculties.edit', $faculty->id) }}" class="btn btn-sm btn-warning">
+                        <span class="fa fa-edit"></span>
                     </a>
-                    <a href="{{ route('faculties.show', $faculty->id) }}">
-                       Show
+                    <a href="{{ route('faculties.show', $faculty->id) }}" class="btn btn-sm btn-info">
+                    <span class="fa fa-eye"></span>
                     </a>
+                    
+                    <form method="POST" action="{{route('faculties.destroy',$faculty->id)}}" style="display:inline;">
+              <!-- post method is not appropriate and patch cannot be included in form -->
+              @method('DELETE')
+                @csrf
+                    
+                  <button type="submit" class="btn btn-sm btn-danger" id="detele">
+                    <span class="fa fa-trash"></span>
+                  </button>
+               
+              </form> 
                     </td>
                   </tr>
                   @endforeach

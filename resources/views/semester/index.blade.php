@@ -41,12 +41,24 @@
                     <td>{{ $semester->semester_name }}</td>
                     <td>{{ $semester->created_by }}</td>
                     <td>
-                      <a href="{{ route('semesters.edit', $semester->id) }}">
-                        Edit
+                    <a href="{{ route('semesters.edit', $semester->id) }}" class="btn btn-sm btn-warning">
+                        <span class="fa fa-edit"></span>
                     </a>
-                    <a href="{{ route('semesters.show', $semester->id) }}">
-                       Show
+                    <a href="{{ route('semesters.show', $semester->id) }}" class="btn btn-sm btn-info">
+                    <span class="fa fa-eye"></span>
                     </a>
+                    
+                    
+                    <form method="POST" action="{{route('semesters.destroy',$semester->id)}}" style="display:inline;">
+              <!-- post method is not appropriate and patch cannot be included in form -->
+              @method('DELETE')
+                @csrf
+                    
+                  <button type="submit" class="btn btn-sm btn-danger" id="detele">
+                    <span class="fa fa-trash"></span>
+                  </button>
+               
+              </form> 
                     </td>
 
                   </tr>

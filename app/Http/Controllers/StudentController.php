@@ -72,7 +72,7 @@ class StudentController extends Controller
             'is_almuni'=>false
         ]);
 
-        return redirect()->route('student.index');
+        return redirect()->route('students.index');
     }
 
 catch(\Exception $e){
@@ -151,6 +151,9 @@ catch(\Exception $e){
      */
     public function destroy($id)
     {
-        //
+        $student =Student::find($id);
+        $student->delete();
+        return redirect()-> route('students.index');
+
     }
 }

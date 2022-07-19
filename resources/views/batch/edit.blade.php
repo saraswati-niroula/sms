@@ -13,9 +13,12 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form method="POST" action="{{route('batches.store')}}">
+              <form method="POST" action="{{route('batches.update',$batch->id)}}">
+                @method("PATCH")
                 @csrf
                 <div class="card-body">
+
+                
                 <div class="form-group">
                     <label for="name">Batch Name</label>
                     <input type="text" 

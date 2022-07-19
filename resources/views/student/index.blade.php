@@ -36,15 +36,24 @@
                     <td>{{ $student->gender }}</td>
                     <td>{{ $student->mobile }}</td>
                     <td>
-                      <a href="{{ route('students.edit', $student->id) }}">
-                        Edit
+                      <a href="{{ route('students.edit', $student->id) }}" class="btn btn-sm btn-warning">
+                        <span class="fa fa-edit"></span>
                     </a>
-                    <a href="{{ route('students.show', $student->id) }}">
-                       Show
+                    <a href="{{ route('students.show', $student->id) }}" class="btn btn-sm btn-info">
+                    <span class="fa fa-eye"></span>
                     </a>
+                    
+                    <form method="POST" action="{{route('students.destroy',$student->id)}}" style="display:inline;">
+              <!-- post method is not appropriate and patch cannot be included in form -->
+              @method('DELETE')
+                @csrf
+                    
+                  <button type="submit" class="btn btn-sm btn-danger" id="detele">
+                    <span class="fa fa-trash"></span>
+                  </button>
+               
+              </form> 
                     </td>
-
-
                   </tr>
                   @endforeach
                   </tbody>

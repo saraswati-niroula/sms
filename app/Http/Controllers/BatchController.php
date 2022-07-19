@@ -63,8 +63,8 @@ class BatchController extends Controller
      */
     public function show($id)
     {
-        $batches =Batch::all();
-        return view ('batch.show');
+        $batch =Batch::find($id);
+        return view ('batch.show',compact('batch'));
     }
 
     /**
@@ -88,7 +88,17 @@ class BatchController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $batch =Batch::find($id);
+
+        $batch_year=$request->get('batch_year');
+        $batch_name=$request->get('batch_name');
+
+        $batch['batch_year']=$batch_year;
+        $batch['batch_name']=$batch_name;
+
+        $batch->update();
+        return redirect()->route('batches.show',$id);
+
     }
 
     /**
@@ -99,6 +109,8 @@ class BatchController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $batch =Batch::find($id);
+        $batch->delete();
+        return redirect()-> route('batchess.index');
     }
 }
