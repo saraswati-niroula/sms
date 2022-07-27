@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Student;
+use App\EducationInfo;
+use App\FamilyInfo;
+use App\CollegeInfo;
 
 use Illuminate\Http\Request;
 
@@ -18,6 +21,34 @@ class StudentController extends Controller
         //select * from students
         $students =Student::all();
         // dd($students);
+        foreach($students as $student){
+            $college_info=CollegeInfo::where('student_id',$student->id)->get();
+            $educaion_info=EducationInfo::where('student_id',$student->id)->get();
+            $family_info=FamilyInfo::where('student_id',$student->id)->get();
+           
+        
+            if(count($college_info)!=0){
+                $student[is_college_info]=true;
+            }
+            else{
+            $student['is_college_info']=false;
+            }  
+            
+            if(count($educaion_info)!=0){
+                $student['is_education_info']=true;
+            }
+            else{
+            $student['is_education_info']=false;
+            }  
+            
+            if(count($family_info)!=0){
+                $student['is_family_info']=true;
+            }
+            else{
+            $student['is_family_info']=false;
+            }
+        }
+
         return view('student.index',compact('students'));
 
     }

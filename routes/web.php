@@ -24,9 +24,16 @@
 // Route::post('students','StudentController@store')->name('student.store');
 Route::resource('students','StudentController');
 Route::resource('eduinfos','EducationalInfoController');
+Route::get('student/{student_id}/edu-info/create','EducationalInfoController@createEducationInfo')
+    ->name('student-eduinfo.create');
 Route::resource('faculties','FacultyController');
 Route::resource('batches','BatchController');
 Route::resource('semesters','SemesterController');
+Route::resource('collegeinfos','CollegeInfoController');
+Route::get('student/{student_id}/family-info/create','FamilyInfoController@createFamilyInfo')
+->name('student-familyinfo.create');
+Route::get('student/{student_id}/college-info/create','CollegeInfoController@createCollegeInfo')
+->name('student-collegeinfo.create');
 
 
 

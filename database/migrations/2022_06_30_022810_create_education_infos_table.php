@@ -14,24 +14,20 @@ class CreateEducationInfosTable extends Migration
     public function up()
     {
         Schema::create('education_infos', function (Blueprint $table) {
-        //         $table->bigIncrements('id');
-        //         $table->sting('board');
-        //         $table->sting('institute_name');
-        //         $table->float('percentage/gpa');
-        //         $table->int('symbol_number',10);
-                // $table->int('student_id');
-                // $table->string('name', 150);
-                // $table->string('mobile', 10)->unique();
-                // $table->string('citizenship', 20)->unique(); 
-                // $table->string('gender', 1);
-                // $table->string('blood_group', 3);
-                // $table->string('perm_address');
-                // $table->string('temp_address');
-                // $table->string('email', 10);
-                // $table->date('dob');
-                // $table->string('picture')->nullable();
-                // $table->boolean('is_active')->default(true);
-                // $table->boolean('is_almuni');
+              
+                $table->bigIncrements('id');
+                $table->unsignedBigInteger('student_id');
+                $table->string('board',10);
+                $table->string('institute_name',255);
+                $table->string('per_cgpa',5);
+                $table->string('symbol_number',10)->unique();
+                $table->string('passed_year',4);
+           
+                // foriegn key usage
+                $table->foreign('student_id')->references('id')->on('students')
+                ->on('students')->onDelete('CASCADE'); 
+               
+                
             $table->timestamps();
         });
     }

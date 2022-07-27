@@ -1,12 +1,15 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\EducationInfo;
+use App\CollegeInfo;
 use App\Student;
+use App\Faculty;
+use App\Batch;
+use App\Semester;
+
 use Illuminate\Http\Request;
 
-class EducationalInfoController extends Controller
+class CollegeInfoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +18,10 @@ class EducationalInfoController extends Controller
      */
     public function index()
     {
-        $eduinfos =EducationInfo::all();
-        dd($eduinfos);
+        $collegeinfos =CollegeInfo::all();
+        return view('collegeinfo.index',compact('collegeinfos'));
+
+
     }
 
     /**
@@ -24,10 +29,13 @@ class EducationalInfoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function createEducationInfo($id)
+    public function createCollegeInfo($id)
     {
         $student = Student::find($id);
-        return view ('eduinfo.create',compact('id','student'));
+        $faculties = Faculty::select('id','faculty_name','faculty_code')->get();
+        $batches = Batch::select('id','batch_name','batch_year')->get();
+        $semesters = Semester::select('id','semester_name')->get();
+        return view ('collegeinfo.create',compact('id','student','faculties','batches','semesters'));
     }
 
     /**
@@ -38,32 +46,23 @@ class EducationalInfoController extends Controller
      */
     public function store(Request $request)
     {
-        $student_id=$request->get('student_id');
-        $board=$request->get('board'); 
-        $institute_name=$request->get('institute_name');
-        $symbol_number=$request->get('symbol_number');
-        $passed_year=$request->get('passed_year');
-        $per_cgpa=$request->get('per_cgpa');
-      
-        
+        $tureg_number=$request->get('tureg_name');
+        $symbol_number=$request->get('symbol_number'); 
         try{
-        EducationInfo::create([
-            'student_id'=>$student_id,
-            'board'=>$board,
-            'institute_name'=>$institute_name,
-            'symbol_number'=>$symbol_number,
-            'passed_year'=>$passed_year,
-            'per_cgpa'=>$per_cgpa
-          
-        ]);
-
-        return redirect()->route('eduinfos.index');
+            CollegeInfo::create([
+                'tureg_number'=>$tureg_number,
+                'symbol_number'=>$symbol_number,
+                
+            ]);
+    
+            return redirect()->route('collegeinfos.index');
+        }
+    
+    catch(\Exception $e){
+        dd($e->getMessage());
+        return redirect()->back();
     }
-
-catch(\Exception $e){
-    dd($e->getMessage());
-    return redirect()->back();
-}
+        
     }
 
     /**
@@ -85,8 +84,7 @@ catch(\Exception $e){
      */
     public function edit($id)
     {
-        $student =EducationInfo::find($id);
-        return view ('eduinfo.edit',compact('student'));
+        //
     }
 
     /**

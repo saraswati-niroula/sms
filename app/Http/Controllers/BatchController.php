@@ -111,6 +111,6 @@ class BatchController extends Controller
     {
         $batch =Batch::find($id);
         $batch->delete();
-        return redirect()-> route('batchess.index');
+        return redirect()-> route('batches.index');
     }
 }
