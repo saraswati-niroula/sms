@@ -23,6 +23,7 @@ class CreateCollegeInfosTable extends Migration
             $table->string('symbol_number',15)->unique();
        
             // foriegn key usage
+            //->on students eauta matra hunxa
             $table->foreign('student_id')->references('id')->on('students')
             ->on('students')->onDelete('CASCADE');
             $table->timestamps();

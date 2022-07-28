@@ -38,10 +38,11 @@
                           <td>Educational Info</td>
                           <td> 
                             @if($student->is_education_info)
-                            <a href="{{ route('eduinfos.create',$student->id) }}">Edit</a>
-
-                             <a href="{{ route('eduinfos.create',$student->id) }}">Delete</a>
-                             @else
+                            <a href="{{ route('eduinfos.show',$student->id) }}">Show</a>
+                            <a href="{{ route('eduinfos.edit',$student->id) }}">Edit</a>
+                            <a href="{{ route('eduinfos.destroy',$student->id) }}">Delete</a>
+                            
+                            @else
                              <a href="{{ route('student-eduinfo.create',$student->id) }}">
                               Create
                             </a>
